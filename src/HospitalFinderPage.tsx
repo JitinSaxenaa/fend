@@ -301,7 +301,7 @@ const HospitalFinderPage: React.FC = () => {
         cords: [coords?.lat, coords?.lng],
         symptoms,
       };
-      const result = await fetch(`http://15.206.26.11/search`, {
+      const result = await fetch(`http://15.206.26.11/api/search`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

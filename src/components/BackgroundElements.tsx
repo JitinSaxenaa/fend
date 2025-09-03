@@ -5,11 +5,11 @@ export default function BackgroundElements() {
   return (
     <div className="fixed inset-0 pointer-events-none">
       {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-teal-50 to-blue-100 animate-gradient-shift"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-teal-50 animate-gradient-shift"></div>
       
       {/* Main Floating Blobs */}
-      <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-400/15 to-teal-400/15 rounded-full blur-3xl animate-float"></div>
-      <div className="absolute bottom-20 right-10 w-64 h-64 bg-gradient-to-r from-teal-400/10 to-blue-400/10 rounded-full blur-2xl animate-float-delayed"></div>
+      <div className="absolute top-20 left-10 w-96 h-96 bg-gradient-to-r from-blue-400/10 to-teal-400/10 rounded-full blur-3xl animate-float"></div>
+      <div className="absolute bottom-20 right-10 w-64 h-64 bg-gradient-to-r from-teal-400/8 to-blue-400/8 rounded-full blur-2xl animate-float-delayed"></div>
       
       {/* Simple Healthcare Icons */}
       <div className="absolute top-32 right-20 opacity-5 animate-float-slow">
@@ -26,7 +26,7 @@ export default function BackgroundElements() {
             d="M0 40 L100 40 L120 20 L140 60 L160 10 L180 70 L200 40 L300 40 L320 20 L340 60 L360 10 L380 70 L400 40 L500 40 L520 20 L540 60 L560 10 L580 70 L600 40 L800 40"
             stroke="url(#heartbeatGradient)"
             strokeWidth="2"
-            className="animate-pulse"
+            className="animate-pulse-slow"
           />
           <defs>
             <linearGradient id="heartbeatGradient" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -49,7 +49,7 @@ export default function BackgroundElements() {
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1.5 h-1.5 bg-gradient-to-r from-blue-400/20 to-teal-400/20 rounded-full animate-float"
+            className="absolute w-1.5 h-1.5 bg-gradient-to-r from-blue-400/15 to-teal-400/15 rounded-full animate-float"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,

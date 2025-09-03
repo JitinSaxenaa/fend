@@ -53,6 +53,12 @@ export default function Hero() {
                   </div>
                   <span>Detect Location</span>
                 </button>
+                <button className="flex-1 px-6 py-3 bg-white/70 backdrop-blur-sm border border-white/30 text-gray-700 rounded-xl font-medium hover:bg-white/90 hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-2">
+                  <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full flex items-center justify-center">
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                  </div>
+                  <span>Detect Location</span>
+                </button>
               </div>
             </div>
 

@@ -73,6 +73,49 @@ export default function GoogleMap({
       });
     }
 
+    if (userLocation) {
+      const userMarker = new google.maps.Marker({
+        position: userLocation,
+        map: mapInstanceRef.current,
+        title: "Your Location",
+        icon: {
+          url:
+            "data:image/svg+xml;charset=UTF-8," +
+            encodeURIComponent(`
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="16" cy="16" r="16" fill="#3B82F6"/>
+                <circle cx="16" cy="16" r="8" fill="white"/>
+                <circle cx="16" cy="16" r="4" fill="#3B82F6"/>
+              </svg>
+            `),
+          scaledSize: new google.maps.Size(32, 32),
+        },
+        zIndex: 1000, // Ensure user location is on top
+      });
+
+      // Add click listener to show user location info
+      userMarker.addListener("click", () => {
+        if (infoWindowRef.current) {
+          const content = `
+              <div class="p-3">
+                <h3 class="font-semibold text-blue-600 mb-2">📍 Your Current Location</h3>
+                <p class="text-sm text-gray-600 mb-1">Latitude: ${userLocation.lat.toFixed(
+                  6
+                )}</p>
+                <p class="text-sm text-gray-600 mb-1">Longitude: ${userLocation.lng.toFixed(
+                  6
+                )}</p>
+                <p class="text-sm text-gray-500 italic">This is where you are located</p>
+              </div>
+            `;
+          infoWindowRef.current.setContent(content);
+          infoWindowRef.current.open(mapInstanceRef.current, userMarker);
+        }
+      });
+
+      userLocationMarkerRef.current = userMarker;
+    }
+
     return () => {
       markersRef.current.forEach((marker) => marker.setMap(null));
       markersRef.current = [];
@@ -94,11 +137,13 @@ export default function GoogleMap({
   useEffect(() => {
     if (!mapInstanceRef.current) return;
 
+    console.log("user location marker ====>>> ", userLocation);
+
     // Clear existing user location marker
-    if (userLocationMarkerRef.current) {
-      userLocationMarkerRef.current.setMap(null);
-      userLocationMarkerRef.current = null;
-    }
+    // if (userLocationMarkerRef.current) {
+    //   userLocationMarkerRef.current.setMap(null);
+    //   userLocationMarkerRef.current = null;
+    // }
 
     // Add user location marker if available
     if (userLocation) {

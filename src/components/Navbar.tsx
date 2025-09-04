@@ -21,7 +21,7 @@ export default function Navbar() {
               <Heart className="w-6 h-6 text-white" />
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-teal-600 bg-clip-text text-transparent">
-              CureConnect
+              CareConnect
             </span>
           </div>
 

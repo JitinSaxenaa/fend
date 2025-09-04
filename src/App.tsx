@@ -15,7 +15,6 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* ✅ Home Page */}
         <Route
           path="/"
           element={
@@ -32,7 +31,6 @@ function App() {
           }
         />
 
-        {/* ✅ Hospital Finder Page */}
         <Route path="/hospitals" element={<HospitalFinderPage />} />
       </Routes>
     </Router>

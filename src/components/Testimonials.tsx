@@ -5,14 +5,14 @@ const testimonials = [
   {
     name: 'Sarah Johnson',
     role: 'Patient',
-    content: 'CureConnect helped me find the nearest hospital with available beds during an emergency. The real-time updates were incredibly accurate.',
+    content: 'CareConnect helped me find the nearest hospital with available beds during an emergency. The real-time updates were incredibly accurate.',
     rating: 5,
     avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
   },
   {
     name: 'Dr. Michael Chen',
     role: 'Emergency Physician',
-    content: 'As a healthcare provider, I appreciate how CureConnect helps patients make informed decisions about where to seek care.',
+    content: 'As a healthcare provider, I appreciate how CareConnect helps patients make informed decisions about where to seek care.',
     rating: 5,
     avatar: 'https://images.pexels.com/photos/612608/pexels-photo-612608.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop'
   },

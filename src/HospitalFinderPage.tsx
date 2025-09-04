@@ -32,11 +32,9 @@ const HospitalFinderPage: React.FC = () => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
 
-  // ✅ Get raw strings
-  const locationRaw = query.get("location"); // "28.61,77.20"
-  const symptomsRaw = query.get("symptoms"); // "ortho"
+  const locationRaw = query.get("location");
+  const symptomsRaw = query.get("symptoms");
 
-  // ✅ Parse coords safely
   const parseCoords = (
     raw: string | null
   ): { lat: number; lng: number } | null => {
@@ -67,7 +65,11 @@ const HospitalFinderPage: React.FC = () => {
   const [userLocation, setUserLocation] = useState<{
     lat: number;
     lng: number;
-  } | null>(null);
+  } | null>({
+    lat: 12.9085887,
+    lng: 77.5540493,
+  });
+  const [dept, setDept] = useState(null);
 
   const detectUserLocation = () => {
     if (navigator.geolocation) {
@@ -329,6 +331,10 @@ const HospitalFinderPage: React.FC = () => {
         }));
         setHospitals(normalized);
         setSelectedHospital(normalized[0] || null);
+
+        if (data.department) {
+          setDept(data.department);
+        }
       } else {
         setHospitals([]);
         setSelectedHospital(null);
@@ -389,6 +395,22 @@ const HospitalFinderPage: React.FC = () => {
                 <h2 className="text-lg font-semibold text-gray-800">
                   Nearby Hospitals ({hospitals.length})
                 </h2>
+                {dept ? (
+                  <span
+                    style={{
+                      backgroundColor: "black",
+                      color: "white",
+                      borderRadius: "20px",
+                      padding: "5px 12px",
+                      position: "relative",
+                      top: "5px",
+                    }}
+                  >
+                    {dept}
+                  </span>
+                ) : (
+                  ""
+                )}
               </div>
               <div className="h-[70vh]">
                 <HospitalList
@@ -400,7 +422,7 @@ const HospitalFinderPage: React.FC = () => {
                     setPayName("");
                     setPayPhone("");
                     setPayCard("");
-                    setPayAmount("");
+                    setPayAmount("500");
                     setShowPayment(true);
                   }}
                 />
@@ -430,7 +452,7 @@ const HospitalFinderPage: React.FC = () => {
                         const newUrl = `/hospitals?location=${
                           userLocation.lat
                         },${userLocation.lng}${
-                          symptomsQuery ? `&symptoms=${symptomsQuery}` : ""
+                          symptomsRaw ? `&symptoms=${symptomsRaw}` : ""
                         }`;
 
                         window.history.pushState({}, "", newUrl);
@@ -500,7 +522,7 @@ const HospitalFinderPage: React.FC = () => {
                       alt="QR Code"
                       className="w-36 h-36"
                       src={`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(
-                        `upi://pay?pa=cureconnect@upi&pn=${
+                        `upi://pay?pa=careconnect@upi&pn=${
                           payName || "NAME"
                         }&am=${payAmount || "0.00"}&cu=INR`
                       )}`}
@@ -510,7 +532,7 @@ const HospitalFinderPage: React.FC = () => {
                     <p className="text-sm text-gray-600">Scan to pay via UPI</p>
                     <p className="text-sm text-gray-600">Amount</p>
                     <input
-                      value={payAmount}
+                      value="₹500"
                       onChange={(e) => setPayAmount(e.target.value)}
                       className="text-2xl font-bold text-gray-900 bg-transparent outline-none"
                     />

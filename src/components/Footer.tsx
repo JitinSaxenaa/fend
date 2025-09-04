@@ -13,7 +13,7 @@ export default function Footer() {
                 <Heart className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-                CureConnect
+                CareConnect
               </span>
             </div>
             <p className="text-gray-300 leading-relaxed max-w-md">
@@ -62,7 +62,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
-            © 2025 CureConnect. All rights reserved.
+            © 2025 CareConnect. All rights reserved.
           </p>
           <p className="text-gray-400 text-sm mt-4 md:mt-0">
             Made with ❤️ for better healthcare access

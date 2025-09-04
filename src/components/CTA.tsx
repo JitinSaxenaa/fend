@@ -19,7 +19,7 @@ export default function CTA() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Join thousands of users who trust CureConnect for their healthcare needs. 
+              Join thousands of users who trust CareConnect for their healthcare needs. 
               Start your search today and experience the future of healthcare access.
             </p>
           </div>
